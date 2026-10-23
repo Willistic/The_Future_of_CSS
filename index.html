@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control Deck — Interop 2027 in pure CSS</title>
+  <meta name="description" content="A sci-fi cockpit built with zero JavaScript to showcase CSS features proposed for Interop 2027.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="checkbox" id="reflow" class="sr-only">
+
+  <div class="compat-banner" role="note">
+    Best viewed in Chrome 155+ / Edge 154+. Other browsers get the graceful fallback.
+  </div>
+
+  <div class="top">
+    <header class="statusbar">
+      <strong class="brand">CONTROL<span>DECK</span></strong>
+      <ul class="feats" aria-label="Browser feature support">
+        <li class="feat" data-f="corner"><i></i>corner-shape</li>
+        <li class="feat" data-f="border"><i></i>border-shape</li>
+        <li class="feat" data-f="anchored"><i></i>anchored query</li>
+        <li class="feat" data-f="trigger"><i></i>scroll-trigger</li>
+        <li class="feat" data-f="flow"><i></i>reading-flow</li>
+        <li class="feat" data-f="size"><i></i>interpolate-size</li>
+        <li class="feat" data-f="rule"><i></i>gap rule</li>
+        <li class="feat" data-f="state"><i></i>scroll-state</li>
+      </ul>
+      <label for="reflow" class="toggle">Reflow layout</label>
+    </header>
+  </div>
+
+  <main class="deck">
+    <section class="module hero" aria-labelledby="hero-title">
+      <p class="tag">border-shape</p>
+      <h1 id="hero-title">Hull Integrity<br>Console</h1>
+      <p>Every outline, border and glow on this deck follows the real shape of the element. Hover this panel to morph its hull.</p>
+    </section>
+
+    <section class="module gauges bevel" aria-labelledby="gauges-title">
+      <p class="tag">anchored container queries</p>
+      <h2 id="gauges-title">Telemetry</h2>
+      <div class="gauge-row">
+        <div class="gauge-wrap">
+          <button class="gauge" style="--v: 82%" aria-describedby="tip-1">Shield</button>
+          <span class="tip" id="tip-1" role="tooltip"><span class="tip-body">Scroll so I sit near the top of the viewport: I flip below and my caret flips with me.</span></span>
+        </div>
+        <div class="gauge-wrap">
+          <button class="gauge" style="--v: 47%" aria-describedby="tip-2">Reactor</button>
+          <span class="tip" id="tip-2" role="tooltip"><span class="tip-body">Position fallback is detected in pure CSS. No JS measures anything.</span></span>
+        </div>
+        <div class="gauge-wrap">
+          <button class="gauge" style="--v: 95%" aria-describedby="tip-3">Thrust</button>
+          <span class="tip" id="tip-3" role="tooltip"><span class="tip-body">Hover or focus a gauge to see its tooltip.</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="module radar scoop" aria-labelledby="radar-title">
+      <p class="tag">@function</p>
+      <h2 id="radar-title">Proximity Radar</h2>
+      <div class="dial" role="img" aria-label="Radar with three orbiting contacts">
+        <i class="blip" style="--phase: 0deg;   --r: 38px"></i>
+        <i class="blip" style="--phase: 130deg; --r: 70px"></i>
+        <i class="blip" style="--phase: 250deg; --r: 100px"></i>
+        <b class="sweep"></b>
+      </div>
+      <p class="fine">Blips are placed with <code>--polar(angle, radius)</code>.</p>
+    </section>
+
+    <section class="module log-module notch" aria-labelledby="log-title">
+      <p class="tag">scroll-state queries</p>
+      <h2 id="log-title">Diagnostics Log</h2>
+      <div class="log" tabindex="0" role="region" aria-labelledby="log-title">
+        <div class="fade fade-top" aria-hidden="true"></div>
+        <ul>
+          <li><time>00:01</time> Boot sequence complete</li>
+          <li><time>00:04</time> Shield harmonics nominal</li>
+          <li><time>00:09</time> Reactor coolant at 47%</li>
+          <li><time>00:13</time> Contact bearing 130°, range 70</li>
+          <li><time>00:18</time> Docking clamp released</li>
+          <li><time>00:22</time> Thruster array calibrated</li>
+          <li><time>00:27</time> Nav beacon acquired</li>
+          <li><time>00:31</time> Hull micro-fracture sealed</li>
+          <li><time>00:36</time> Life support cycling</li>
+          <li><time>00:40</time> All systems green</li>
+        </ul>
+        <div class="fade fade-bottom" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="module drawers squircle" aria-labelledby="drawers-title">
+      <p class="tag">interpolate-size</p>
+      <h2 id="drawers-title">Subsystems</h2>
+      <details name="sys" open>
+        <summary>Propulsion</summary>
+        <p>Twin ion drives with vectored thrust. Height animates from 0 to <code>auto</code>, no JS and no magic numbers.</p>
+      </details>
+      <details name="sys">
+        <summary>Life support</summary>
+        <p>Closed-loop atmosphere with redundant scrubbers. The drawer height is whatever the content needs.</p>
+        <p>Add more text and the animation still lands exactly.</p>
+      </details>
+      <details name="sys">
+        <summary>Navigation</summary>
+        <p>Star-tracker aligned. Dead-reckoning fallback standing by.</p>
+      </details>
+    </section>
+
+    <section class="systems" aria-labelledby="sys-title">
+      <p class="tag">scroll-triggered animations</p>
+      <h2 id="sys-title">Power-up Sequence</h2>
+      <p class="fine">Scroll slowly. Each module powers on when it enters view, and powers down when it leaves.</p>
+      <div class="power-grid">
+        <article class="power bevel"><h3>Core</h3><p>Online</p></article>
+        <article class="power notch"><h3>Sensors</h3><p>Online</p></article>
+        <article class="power scoop"><h3>Weapons</h3><p>Standby</p></article>
+        <article class="power squircle"><h3>Comms</h3><p>Online</p></article>
+        <article class="power bevel"><h3>Cargo</h3><p>Sealed</p></article>
+        <article class="power notch"><h3>Autopilot</h3><p>Engaged</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Built with CSS from the Interop 2027 shortlist. Zero JavaScript.</p>
+  </footer>
+</body>
+</html>
