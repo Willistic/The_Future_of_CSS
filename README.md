@@ -1,7 +1,7 @@
 # Control Deck
 
 A sci-fi cockpit built in pure CSS (no JavaScript) to preview features from the
-[Interop 2027 shortlist](https://www.joshwcomeau.com/css/interop-2027/).
+[Interop 2027 shortlist].
 
 | Feature | Where |
 |---|---|
